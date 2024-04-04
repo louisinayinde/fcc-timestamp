@@ -32,11 +32,8 @@ app.get("/api/:date", function (req, res) {
     date = new Date(req.params.date);
   }
   
-  // giving headers for JSON
-  res.set({ 'Content-Type': 'application/json' }) 
   // if the date is invalid
-  if(!date.getTime()) res.send(JSON.stringify({error: "Invalid Date"}))
-  // else, we send the object with two members (unix and natural)
+  if(!date.getTime()) res.send({error: "Invalid Date"})
   else res.send(JSON.stringify({
     unix: date.getTime(),
     utc: date.toUTCString()
